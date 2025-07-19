@@ -1,0 +1,24 @@
+name: Verify server running
+
+jobs:
+  build-test-scan:
+    runs-on: ubuntu-latest
+    
+    steps:
+    - uses: actions/checkout@v3
+    
+    - name: Build and run server
+      run: |
+        docker-compose up -d --build
+        sleep 10  # give the app time to start
+
+    - name: Verify HTTP response
+      run: |
+        RESPONSE=$(curl -s http://localhost:5000)
+        if [[ "$RESPONSE" == "hello world" ]]; then
+          echo "Server returned expected response."
+        else
+          echo "Server did not return expected response"
+          echo "$RESPONSE"
+          exit 1
+        fi
