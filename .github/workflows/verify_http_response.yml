@@ -11,7 +11,7 @@ jobs:
   
     - name: Build and run server
       run: |
-        docker-compose up -d
+        docker compose up -d
         sleep 10  # give the app time to start
 
     - name: Verify HTTP response
