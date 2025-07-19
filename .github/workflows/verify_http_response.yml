@@ -8,21 +8,10 @@ jobs:
     
     steps:
     - uses: actions/checkout@v3
-    
-    - name: Set up Docker Buildx
-      uses: docker/setup-buildx-action@v2
-
-    - name: Set up Docker Compose
-      uses: docker/setup-docker-compose@v2
-    
-    - name: Install Docker Compose
-      run: |
-        sudo curl -L "https://github.com/docker/compose/releases/download/v2.20.2/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
-        sudo chmod +x /usr/local/bin/docker-compose
-      
+  
     - name: Build and run server
       run: |
-        docker-compose up -d --build
+        docker-compose up -d
         sleep 10  # give the app time to start
 
     - name: Verify HTTP response
