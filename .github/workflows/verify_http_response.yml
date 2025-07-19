@@ -1,5 +1,8 @@
 name: Verify server running
-
+on:
+  push:
+    branches: [main]
+    
 jobs:
   build-test-scan:
     runs-on: ubuntu-latest
