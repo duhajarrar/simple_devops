@@ -1,0 +1,1 @@
+This is simple project contains hello word web app using flask with Dockerfile for Containerization and docker-compose.yml for Orchestration and connected with Github workflow for verfying running the web app 
